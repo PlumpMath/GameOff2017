@@ -12,10 +12,14 @@ public class PlayerInputHandler : MonoBehaviour
     private Player input;
 
     //inputs
-    private float move_horizontal;
-    private float move_vertical;
-    private bool jump;
-    private bool attack;
+    [HideInInspector]
+    public float h_dir;
+    [HideInInspector]
+    public float v_dir;
+    [HideInInspector]
+    public bool jump;
+    [HideInInspector]
+    public bool attack;
 
     private void Awake()
     {
@@ -35,8 +39,8 @@ public class PlayerInputHandler : MonoBehaviour
     private void Update()
     {
         //process input
-        move_horizontal = input.GetAxis("move_horizontal");
-        move_vertical = input.GetAxis("move_vertical");
+        h_dir = input.GetAxis("h_dir");
+        v_dir = input.GetAxis("v_dir");
         jump = input.GetButtonDown("jump");
         attack = input.GetButtonDown("attack");
     }

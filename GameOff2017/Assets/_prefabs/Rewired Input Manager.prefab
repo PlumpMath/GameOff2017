@@ -193,7 +193,7 @@ MonoBehaviour:
       _excludeFromControllerAutoAssignment: 0
     actions:
     - _id: 0
-      _name: move_horizontal
+      _name: h_dir
       _type: 0
       _descriptiveName: 
       _positiveDescriptiveName: 
@@ -202,7 +202,7 @@ MonoBehaviour:
       _userAssignable: 1
       _categoryId: 1
     - _id: 1
-      _name: move_vertical
+      _name: v_dir
       _type: 0
       _descriptiveName: 
       _positiveDescriptiveName: 
@@ -295,8 +295,8 @@ MonoBehaviour:
       _digitalAxisSimulation: 1
       _digitalAxisSnap: 1
       _digitalAxisInstantReverse: 0
-      _digitalAxisGravity: 3
-      _digitalAxisSensitivity: 3
+      _digitalAxisGravity: 1000
+      _digitalAxisSensitivity: 1000
       _mouseXYAxisMode: 0
       _mouseOtherAxisMode: 0
       _mouseXYAxisSensitivity: 1
@@ -886,7 +886,7 @@ MonoBehaviour:
         _axisRange: 0
         _invert: 0
         _axisContribution: 0
-        _keyboardKeyCode: 273
+        _keyboardKeyCode: 119
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
@@ -897,7 +897,7 @@ MonoBehaviour:
         _axisRange: 0
         _invert: 0
         _axisContribution: 1
-        _keyboardKeyCode: 274
+        _keyboardKeyCode: 115
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
@@ -908,7 +908,7 @@ MonoBehaviour:
         _axisRange: 0
         _invert: 0
         _axisContribution: 1
-        _keyboardKeyCode: 276
+        _keyboardKeyCode: 97
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
@@ -919,7 +919,7 @@ MonoBehaviour:
         _axisRange: 0
         _invert: 0
         _axisContribution: 0
-        _keyboardKeyCode: 275
+        _keyboardKeyCode: 100
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
@@ -930,7 +930,7 @@ MonoBehaviour:
         _axisRange: 0
         _invert: 0
         _axisContribution: 0
-        _keyboardKeyCode: 120
+        _keyboardKeyCode: 44
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
@@ -941,7 +941,7 @@ MonoBehaviour:
         _axisRange: 0
         _invert: 0
         _axisContribution: 0
-        _keyboardKeyCode: 99
+        _keyboardKeyCode: 46
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
