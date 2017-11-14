@@ -17,6 +17,7 @@ public class PizzaController : MonoBehaviour
     private bool wait = false;
     public float wait_time;
     private bool return_to_player = false;
+    public BoxCollider2D platform_collider;
 
     private void Start()
     {
@@ -24,7 +25,7 @@ public class PizzaController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         //disable collider
-        GetComponent<BoxCollider2D>().enabled = false;
+        platform_collider.enabled = false;
 
         //get target
         if (PlayerController.instance.current_direction == PlayerController.direction.LEFT)
@@ -57,7 +58,7 @@ public class PizzaController : MonoBehaviour
         wait = true;
         float wait_timer = wait_time;
 
-        GetComponent<BoxCollider2D>().enabled = true;
+        platform_collider.enabled = true;
 
         while (wait_timer > 0f)
         {
@@ -67,7 +68,7 @@ public class PizzaController : MonoBehaviour
 
         wait = false;
         return_to_player = true;
-        GetComponent<BoxCollider2D>().enabled = false;
+        platform_collider.enabled = false;
     }
 
     private void MoveToPlayer()
@@ -79,9 +80,25 @@ public class PizzaController : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, player_position, return_speed * Time.deltaTime);
     }
 
+    private void KillEnemy(GameObject enemy)
+    {
+        Debug.Log("kill");
+        move_to_target = false;
+        wait = false;
+        return_to_player = true;
+        platform_collider.enabled = false;
+        Destroy(enemy);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("enemy"))
+            KillEnemy(collision.gameObject);
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && !wait)
+        if (collision.gameObject.CompareTag("Player") && !move_to_target && !wait)
         {
             Debug.Log("collision");
             PlayerController.instance.can_attack = true;
