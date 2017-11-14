@@ -67,8 +67,14 @@ public class PlayerController : MonoBehaviour
                 Jump();
 
             //throw pizza
-            if (PlayerInputHandler.instance.attack && can_attack)
-                Attack();
+            if (PlayerInputHandler.instance.attack)
+            {
+                if (can_attack)
+                    Attack();
+                else
+                    Recall();
+            }
+
         }
     }
 
@@ -121,6 +127,11 @@ public class PlayerController : MonoBehaviour
     {
         can_attack = false;
         Instantiate(pizza, pizza_spawn.position, pizza_spawn.rotation);
+    }
+
+    private void Recall()
+    {
+        PizzaController.instance.Recall();
     }
 
     private void Death()

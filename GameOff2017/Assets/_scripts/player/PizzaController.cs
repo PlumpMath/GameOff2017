@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PizzaController : MonoBehaviour
 {
+    //singleton
+    public static PizzaController instance;
+
     //player reference
     private GameObject player;
 
@@ -18,6 +21,15 @@ public class PizzaController : MonoBehaviour
     public float wait_time;
     private bool return_to_player = false;
     public BoxCollider2D platform_collider;
+
+    private void Awake()
+    {
+        //singleton setup
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+    }
 
     private void Start()
     {
@@ -82,12 +94,19 @@ public class PizzaController : MonoBehaviour
 
     private void KillEnemy(GameObject enemy)
     {
-        Debug.Log("kill");
         move_to_target = false;
         wait = false;
         return_to_player = true;
         platform_collider.enabled = false;
         enemy.GetComponent<Enemy>().Death();
+    }
+
+    public void Recall()
+    {
+        move_to_target = false;
+        wait = false;
+        return_to_player = true;
+        platform_collider.enabled = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
