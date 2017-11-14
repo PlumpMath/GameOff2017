@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour {
+public class BullyController : Enemy {
 
     // Enemy States
     public enum direction { LEFT, RIGHT};
@@ -15,12 +15,8 @@ public class EnemyController : MonoBehaviour {
     RaycastHit2D rayCastLeft;
     RaycastHit2D rayCastRight;
 
-    // Alive
-    bool alive;
-
 	// Use this for initialization
 	void Start () {
-        alive = true;
 
         // Randomize Direction
         if (Random.Range(0, 1) == 0)
@@ -33,13 +29,14 @@ public class EnemyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 	}
 
     public IEnumerator Patrol()
     {
         Vector2 dir = this.transform.TransformDirection(Vector2.down) * 1f;
 
-        while (alive)
+        while (!dead)
         {
             Vector3 leftBase = new Vector3(transform.position.x - .2f, transform.position.y, transform.position.z);
             Vector3 rightBase = new Vector3(transform.position.x + .2f, transform.position.y, transform.position.z);
@@ -68,5 +65,21 @@ public class EnemyController : MonoBehaviour {
             yield return null;
         }
         yield return null;
+    }
+
+    public override void Death()
+    {
+        base.Death();
+
+        anim.SetBool("dead", true);
+        GetComponent<BoxCollider2D>().enabled = false;
+        StartCoroutine(Remove());
+    }
+
+    private IEnumerator Remove()
+    {
+        yield return new WaitForSeconds(5);
+
+        Destroy(gameObject);
     }
 }

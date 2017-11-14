@@ -87,7 +87,7 @@ public class PizzaController : MonoBehaviour
         wait = false;
         return_to_player = true;
         platform_collider.enabled = false;
-        Destroy(enemy);
+        enemy.GetComponent<Enemy>().Death();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

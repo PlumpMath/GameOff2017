@@ -18,7 +18,7 @@ TagManager:
   - 
   - player
   - pizza
-  - 
+  - platform
   - 
   - 
   - 
@@ -43,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: background
+    uniqueID: 1872077683
+    locked: 0
+  - name: foreground
+    uniqueID: 1316081077
     locked: 0
