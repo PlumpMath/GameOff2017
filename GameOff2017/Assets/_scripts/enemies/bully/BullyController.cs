@@ -76,6 +76,7 @@ public class BullyController : Enemy {
 
         anim.SetBool("dead", true);
         GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().gravityScale = 0.5f;
         StartCoroutine(Remove());
     }
 

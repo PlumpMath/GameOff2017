@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 445234615}
   - component: {fileID: 445234616}
   - component: {fileID: 445234617}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ground_check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -526,13 +526,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e6c6fdbc750784d9a276dae015e9b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   sprite: {fileID: 1175457144}
   anim: {fileID: 1175457146}
   current_direction: 0
   pizza: {fileID: 1906172521694244, guid: 9bd39c7e95def4c4f8d4f2e7d84b4914, type: 2}
   pizza_spawn: {fileID: 978603999}
   pizza_spawn_distance: 0.5
-  move_speed: 200
+  move_speed: 150
   jump_force: 10
   death_force: 5
   grounded: 0
@@ -701,16 +702,31 @@ Prefab:
     - target: {fileID: 224913429734376330, guid: 2647c128f14ca614f8d6bbb066ed1676,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: -211.57904
+      value: -370.07904
       objectReference: {fileID: 0}
     - target: {fileID: 224913429734376330, guid: 2647c128f14ca614f8d6bbb066ed1676,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 144.97595
+      value: -66.02405
       objectReference: {fileID: 0}
     - target: {fileID: 1156705660829758, guid: 2647c128f14ca614f8d6bbb066ed1676, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 223027398312604166, guid: 2647c128f14ca614f8d6bbb066ed1676,
+        type: 2}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 223027398312604166, guid: 2647c128f14ca614f8d6bbb066ed1676,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1198279875}
+    - target: {fileID: 114398110355556748, guid: 2647c128f14ca614f8d6bbb066ed1676,
+        type: 2}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2647c128f14ca614f8d6bbb066ed1676, type: 2}
@@ -874,6 +890,7 @@ GameObject:
   - component: {fileID: 1198279874}
   - component: {fileID: 1198279873}
   - component: {fileID: 1198279877}
+  - component: {fileID: 1198279878}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -955,7 +972,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SCShader: {fileID: 4800000, guid: 14156ee2cd4dade4a8da9c29407b9203, type: 3}
-  Fade: 0.5
+  Fade: 0.25
+--- !u!114 &1198279878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1198279872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: cc39894cf6516ef4d918f880b12e330b, type: 2}
 --- !u!4 &1242736780 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4279907555187064, guid: 2647c128f14ca614f8d6bbb066ed1676,

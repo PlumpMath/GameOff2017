@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //components
-    private Rigidbody2D rb;
+    [HideInInspector]
+    public Rigidbody2D rb;
     public SpriteRenderer sprite;
     public Animator anim;
 
@@ -75,6 +76,12 @@ public class PlayerController : MonoBehaviour
                     Recall();
             }
 
+            if(!grounded && !anim.GetBool("jump"))
+            {
+                anim.SetBool("jumping", true);
+                anim.SetBool("idle", false);
+                anim.SetBool("walking", false);
+            }
         }
     }
 
@@ -97,14 +104,14 @@ public class PlayerController : MonoBehaviour
 
         if(grounded)
         {
-            if(anim.GetBool("jumping") == true)
+            if(anim.GetBool("jumping"))
                 anim.SetBool("jumping", false);
-            if(velocity.x == 0 && anim.GetBool("idle") == false)
+            if(velocity.x == 0 && !anim.GetBool("idle"))
             {
                 anim.SetBool("idle", true);
                 anim.SetBool("walking", false);
             }
-            else if(velocity.x != 0 && anim.GetBool("walking") == false)
+            else if(velocity.x != 0 && !anim.GetBool("walking"))
             {
                 anim.SetBool("idle", false);
                 anim.SetBool("walking", true);
@@ -138,6 +145,7 @@ public class PlayerController : MonoBehaviour
     {
         dead = true;
         rb.velocity = Vector2.zero;
+        rb.gravityScale = 0.5f;
         rb.AddForce(transform.up * death_force, ForceMode2D.Impulse);
         GetComponent<BoxCollider2D>().enabled = false;
     }

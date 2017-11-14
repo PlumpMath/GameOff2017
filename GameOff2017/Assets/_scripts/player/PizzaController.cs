@@ -11,6 +11,7 @@ public class PizzaController : MonoBehaviour
     private GameObject player;
 
     //pizza attributes
+    public SpriteRenderer sprite;
     public float throw_speed;
     public float return_speed;
     public float throw_distance;

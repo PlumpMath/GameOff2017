@@ -4,12 +4,38 @@ using UnityEngine;
 
 public class PlayerGroundCheck : MonoBehaviour
 {
-    private void OnTriggerStay2D(Collider2D collision)
+    private float player_height;
+
+    private void Start()
     {
-        if(collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("pizza"))
+        //get player height
+        player_height = PlayerController.instance.sprite.bounds.size.y;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("ground"))
         {
-            PlayerController.instance.grounded = true;
+            if (PlayerController.instance.transform.position.y - (player_height / 2) > collision.gameObject.transform.position.y +
+                    (collision.gameObject.GetComponent<SpriteRenderer>().bounds.size.y / 2))
+                PlayerController.instance.grounded = true;
+            else
+                PlayerController.instance.grounded = false;
         }
+        else if(collision.gameObject.CompareTag("pizza"))
+        {
+            if (PlayerController.instance.transform.position.y - (player_height / 2) > collision.gameObject.transform.position.y +
+                    (PizzaController.instance.sprite.bounds.size.y / 2))
+                PlayerController.instance.grounded = true;
+            else
+                PlayerController.instance.grounded = false;
+        }
+
+        /*
+        if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("pizza")
+            && PlayerController.instance.rb.velocity.y == 0)
+            PlayerController.instance.grounded = true;
+            */
     }
 
     private void OnTriggerExit2D(Collider2D collision)
