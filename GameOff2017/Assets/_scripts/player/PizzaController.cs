@@ -100,7 +100,6 @@ public class PizzaController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && !move_to_target && !wait)
         {
-            Debug.Log("collision");
             PlayerController.instance.can_attack = true;
             Destroy(gameObject);
         }

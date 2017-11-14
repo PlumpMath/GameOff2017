@@ -29,7 +29,10 @@ public class BullyController : Enemy {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (current_direction == direction.LEFT && sprite.flipX)
+            sprite.flipX = false;
+        else if (current_direction == direction.RIGHT && !sprite.flipX)
+            sprite.flipX = true;
 	}
 
     public IEnumerator Patrol()

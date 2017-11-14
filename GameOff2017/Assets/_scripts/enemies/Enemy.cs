@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
+    public SpriteRenderer sprite;
     public Animator anim;
     [HideInInspector]
     public bool dead;

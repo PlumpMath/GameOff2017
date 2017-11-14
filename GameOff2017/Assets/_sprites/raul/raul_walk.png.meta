@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: e240719e1d17f3541ab9bf4aab8b1f5e
-timeCreated: 1510629774
+guid: 4098a16d6cd679644b4f85ebfef6a9bd
+timeCreated: 1510632784
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: bully_walk_0
-    21300002: bully_walk_1
+    21300000: raul_walk_0
+    21300002: raul_walk_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -98,7 +98,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bully_walk_0
+      name: raul_walk_0
       rect:
         serializedVersion: 2
         x: 0
@@ -112,7 +112,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: bully_walk_1
+      name: raul_walk_1
       rect:
         serializedVersion: 2
         x: 16

@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2ecb3adbadfa9f439bc372f7a6e8b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throw_speed: 5
+  throw_speed: 7
   return_speed: 10
   throw_distance: 1.5
   wait_time: 0.65
