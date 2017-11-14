@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     //components
     [HideInInspector]
     public Rigidbody2D rb;
+    [Header("COMPONENTS")]
     public SpriteRenderer sprite;
     public Animator anim;
 
@@ -22,11 +23,13 @@ public class PlayerController : MonoBehaviour
     public direction current_direction;
 
     //pizza
+    [Header("PIZZA")]
     public GameObject pizza;
     public Transform pizza_spawn;
     public float pizza_spawn_distance;
 
     //player values
+    [Header("MOVEMENT")]
     public float move_speed;
     public float jump_force;
     public float death_force;
@@ -36,6 +39,13 @@ public class PlayerController : MonoBehaviour
     public bool grounded;
     [HideInInspector]
     public bool can_attack;
+
+    //sfx
+    private AudioSource audio;
+    [Header("SFX")]
+    public AudioClip jump_sound;
+    public AudioClip attack_sound;
+    public AudioClip death_sound;
 
     private void Awake()
     {
@@ -56,6 +66,9 @@ public class PlayerController : MonoBehaviour
 
         //set attributes
         can_attack = true;
+
+        //get audio source
+        audio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -126,6 +139,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
+        audio.PlayOneShot(jump_sound);
         grounded = false;
         rb.AddForce(transform.up * jump_force, ForceMode2D.Impulse);
     }
@@ -143,6 +157,7 @@ public class PlayerController : MonoBehaviour
 
     private void Death()
     {
+        audio.PlayOneShot(death_sound);
         dead = true;
         rb.velocity = Vector2.zero;
         rb.gravityScale = 0.5f;
