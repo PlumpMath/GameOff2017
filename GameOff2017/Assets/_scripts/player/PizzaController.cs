@@ -87,6 +87,11 @@ public class PizzaController : MonoBehaviour
     private void MoveToPlayer()
     {
         //get player position
+        if (player == null)
+        {
+            //if player dies without pizza
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
         Vector2 player_position = player.transform.position;
 
         //move to player

@@ -25,6 +25,9 @@ public class BullyController : Enemy {
             current_direction = direction.RIGHT;
 
         StartCoroutine(Patrol());
+
+        //set sprite
+        sprite = transform.Find("enemy_sprite").GetComponent<SpriteRenderer>();
     }
 	
 	// Update is called once per frame

@@ -8,6 +8,9 @@ TagManager:
   - pizza
   - enemy
   - pizza_trigger
+  - enemy_spawn
+  - player_spawn
+  - boundary
   layers:
   - Default
   - TransparentFX
