@@ -41,7 +41,7 @@ public class LevelManager : MonoBehaviour {
 
     private void Update()
     {
-        if (level == null)
+        if (level == null) //&& lives > 0)
             SetupLevel();
     }
 

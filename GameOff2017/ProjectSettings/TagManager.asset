@@ -11,6 +11,7 @@ TagManager:
   - enemy_spawn
   - player_spawn
   - boundary
+  - end_level
   layers:
   - Default
   - TransparentFX

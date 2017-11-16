@@ -167,9 +167,21 @@ public class PlayerController : MonoBehaviour
         LevelManager.instance.BreakdownLevel();
     }
 
+    private IEnumerator LevelComplete()
+    {
+        yield return new WaitForSeconds(1);
+        LevelManager.instance.current_level = null;
+        LevelManager.instance.BreakdownLevel();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("enemy") || collision.gameObject.CompareTag("boundary"))
             StartCoroutine(Death());
+        else if (collision.gameObject.CompareTag("end_level"))
+        {
+            StartCoroutine(LevelComplete());
+        }
+
     }
 }
