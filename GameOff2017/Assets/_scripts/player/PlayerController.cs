@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
                     Recall();
             }
 
-            if(!grounded && !anim.GetBool("jump"))
+            if(!grounded && !anim.GetBool("jumping"))
             {
                 anim.SetBool("jumping", true);
                 anim.SetBool("idle", false);
