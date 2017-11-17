@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
         PizzaController.instance.Recall();
     }
 
-    private void Death()
+    private IEnumerator Death()
     {
         audio.PlayOneShot(death_sound);
         dead = true;
@@ -163,11 +163,25 @@ public class PlayerController : MonoBehaviour
         rb.gravityScale = 0.5f;
         rb.AddForce(transform.up * death_force, ForceMode2D.Impulse);
         GetComponent<BoxCollider2D>().enabled = false;
+        yield return new WaitForSeconds(1);
+        LevelManager.instance.BreakdownLevel();
+    }
+
+    private IEnumerator LevelComplete()
+    {
+        yield return new WaitForSeconds(1);
+        LevelManager.instance.current_level = null;
+        LevelManager.instance.BreakdownLevel();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("enemy"))
-            Death();
+        if (collision.gameObject.CompareTag("enemy") || collision.gameObject.CompareTag("boundary"))
+            StartCoroutine(Death());
+        else if (collision.gameObject.CompareTag("end_level"))
+        {
+            StartCoroutine(LevelComplete());
+        }
+
     }
 }
