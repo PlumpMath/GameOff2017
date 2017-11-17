@@ -164,6 +164,9 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(transform.up * death_force, ForceMode2D.Impulse);
         GetComponent<BoxCollider2D>().enabled = false;
         yield return new WaitForSeconds(1);
+
+        //remove life
+        LevelManager.instance.lives--;
         LevelManager.instance.BreakdownLevel();
     }
 

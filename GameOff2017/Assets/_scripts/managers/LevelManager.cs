@@ -66,9 +66,7 @@ public class LevelManager : MonoBehaviour {
 
     public void BreakdownLevel()
     {
-        //remove life
-        lives--;
-
+ 
         //update ui
         UIManager.instance.UpdateLives();
 
