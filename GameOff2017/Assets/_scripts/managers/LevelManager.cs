@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour {
 
@@ -22,7 +24,9 @@ public class LevelManager : MonoBehaviour {
     //level object
     public GameObject level;
 
+    //player properties
     public GameObject current_player;
+    public int lives;
 
     private void Awake()
     {
@@ -35,13 +39,20 @@ public class LevelManager : MonoBehaviour {
 
     private void Start()
     {
+        //set lives
+        lives = 3;
+
+        //update ui
+        UIManager.instance.UpdateLives();
+
         //setup first level
         SetupLevel();
+
     }
 
     private void Update()
     {
-        if (level == null) //&& lives > 0)
+        if (level == null && lives > 0)
             SetupLevel();
     }
 
@@ -55,9 +66,36 @@ public class LevelManager : MonoBehaviour {
 
     public void BreakdownLevel()
     {
+        //remove life
+        lives--;
+
+        //update ui
+        UIManager.instance.UpdateLives();
+
         //destroy level and player
-        if (level != null)
+        if (level != null && lives != 0)
             Destroy(level);
+        else
+            StartCoroutine(GameOver());
+    }
+
+    public IEnumerator GameOver()
+    {
+        yield return StartCoroutine(TypeText());
+        SceneManager.LoadScene(0);
+    }
+    IEnumerator TypeText()
+    {
+        string message = "GAME OVER !";
+        Text text = GameObject.Find("gameover").GetComponent<Text>();
+        foreach (char letter in message.ToCharArray())
+        {
+            text.text += letter;
+            yield return 0;
+            yield return new WaitForSeconds(.1f);
+        }
+        yield return new WaitForSeconds(2);
+        text.text = "";
     }
 
     private void SpawnPlayer()
