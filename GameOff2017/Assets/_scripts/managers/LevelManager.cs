@@ -12,8 +12,6 @@ public class LevelManager : MonoBehaviour {
     //prefabs
     [Header("PLAYER PREFAB")]
     public GameObject player;
-    [Header("ENEMY PREFAB")]
-    public GameObject bully;
 
     //level properties
     [Header("LEVEL PROPERTIES")]
@@ -102,7 +100,6 @@ public class LevelManager : MonoBehaviour {
         Transform player_spawn = GameObject.FindGameObjectWithTag("player_spawn").transform;
 
         //spawn player
-        Debug.Log(current_player);
         current_player = Instantiate(player, player_spawn.position, Quaternion.identity, player_spawn);
     }
 
@@ -115,7 +112,7 @@ public class LevelManager : MonoBehaviour {
         //spawn enemies
         for (int i = 0; i < enemy_spawn_points.Length; i++)
         {
-            Instantiate(bully, enemy_spawn_points[i].transform.position, Quaternion.identity, enemy_spawn_points[i].transform);
+            Instantiate(enemy_spawn_points[i].GetComponent<SpawnPrefab>().prefab, enemy_spawn_points[i].transform.position, Quaternion.identity, enemy_spawn_points[i].transform);
         }
     }
 

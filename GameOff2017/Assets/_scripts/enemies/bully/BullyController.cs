@@ -44,8 +44,8 @@ public class BullyController : Enemy {
 
         while (!dead)
         {
-            Vector3 leftBase = new Vector3(transform.position.x - .2f, transform.position.y, transform.position.z);
-            Vector3 rightBase = new Vector3(transform.position.x + .2f, transform.position.y, transform.position.z);
+            Vector3 leftBase = new Vector3(transform.position.x - .3f, transform.position.y, transform.position.z);
+            Vector3 rightBase = new Vector3(transform.position.x + .3f, transform.position.y, transform.position.z);
             rayCastLeft = Physics2D.Raycast(leftBase, Vector2.down, 1f);
             rayCastRight = Physics2D.Raycast(rightBase, Vector2.down, 1f);
             Debug.DrawRay(leftBase, dir, Color.red);
@@ -54,7 +54,7 @@ public class BullyController : Enemy {
             if (current_direction == direction.RIGHT)
             {
                 this.transform.position = new Vector3(transform.position.x + speed, transform.position.y, transform.position.z);
-                if (rayCastRight.collider == null || rayCastRight.collider.transform.tag != "ground")
+                if (rayCastRight.collider == null || rayCastRight.collider.transform.tag != "ground")// || rayCastRight.collider.transform.tag == "enemy")
                 {
                     current_direction = direction.LEFT;
                 }
@@ -62,7 +62,7 @@ public class BullyController : Enemy {
             else
             {
                 this.transform.position = new Vector3(transform.position.x - speed, transform.position.y, transform.position.z);
-                if (rayCastLeft.collider == null || rayCastLeft.collider.transform.tag != "ground")
+                if (rayCastLeft.collider == null || rayCastLeft.collider.transform.tag != "ground")// || rayCastRight.collider.transform.tag == "enemy")
                 {
                     current_direction = direction.RIGHT;
                 }
@@ -88,5 +88,14 @@ public class BullyController : Enemy {
         yield return new WaitForSeconds(5);
 
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("enemy"))
+            if (current_direction == direction.RIGHT)
+                current_direction = direction.LEFT;
+            else
+                current_direction = direction.RIGHT;
     }
 }

@@ -203,6 +203,26 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224592024934292308, guid: 2647c128f14ca614f8d6bbb066ed1676,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224592024934292308, guid: 2647c128f14ca614f8d6bbb066ed1676,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224592024934292308, guid: 2647c128f14ca614f8d6bbb066ed1676,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 6.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 224592024934292308, guid: 2647c128f14ca614f8d6bbb066ed1676,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -19.35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2647c128f14ca614f8d6bbb066ed1676, type: 2}
   m_IsPrefabParent: 0
@@ -247,7 +267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1254911834784900, guid: 0295a1f10d5149b40b1592db6bc8ac79, type: 2}
-  bully: {fileID: 1276446103147340, guid: 68e5a4e0ceda25747b031e5ba3f4e724, type: 2}
   level_root: {fileID: 1518007004}
   current_level: {fileID: 0}
   level: {fileID: 0}
