@@ -177,7 +177,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.21}
+  m_Size: {x: 1.05, y: 0.27}
   m_EdgeRadius: 0
 --- !u!61 &61556468837725488
 BoxCollider2D:
@@ -202,7 +202,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.08}
+  m_Size: {x: 0.86, y: 0.11}
   m_EdgeRadius: 0
 --- !u!61 &61722501143650262
 BoxCollider2D:
@@ -238,7 +238,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: cb973cb754498744380b06beb300b8b6, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

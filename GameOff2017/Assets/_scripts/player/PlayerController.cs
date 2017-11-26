@@ -77,8 +77,7 @@ public class PlayerController : MonoBehaviour
         {
             //update movement
             HorizontalMovement();
-            if (PlayerInputHandler.instance.jump && grounded)
-                Jump();
+            VerticalMovement();
 
             //throw pizza
             if (PlayerInputHandler.instance.attack)
@@ -137,11 +136,19 @@ public class PlayerController : MonoBehaviour
             sprite.flipX = false;
     }
 
-    private void Jump()
+    private void VerticalMovement()
     {
-        audio.PlayOneShot(jump_sound);
-        grounded = false;
-        rb.AddForce(transform.up * jump_force, ForceMode2D.Impulse);
+        //jump
+        if (PlayerInputHandler.instance.jump && grounded)
+        {
+            audio.PlayOneShot(jump_sound);
+            grounded = false;
+            rb.AddForce(transform.up * jump_force, ForceMode2D.Impulse);
+        }
+
+        //check for falling
+        if (grounded && rb.velocity.y != 0)
+            grounded = false;
     }
 
     private void Attack()

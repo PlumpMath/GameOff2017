@@ -12,7 +12,7 @@ public class PlayerGroundCheck : MonoBehaviour
         player_height = PlayerController.instance.sprite.bounds.size.y;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("ground"))
         {
@@ -30,16 +30,11 @@ public class PlayerGroundCheck : MonoBehaviour
             else
                 PlayerController.instance.grounded = false;
         }
-
-        /*
-        if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("pizza")
-            && PlayerController.instance.rb.velocity.y == 0)
-            PlayerController.instance.grounded = true;
-            */
     }
-
+    /*
     private void OnTriggerExit2D(Collider2D collision)
     {
         PlayerController.instance.grounded = false;
     }
+    */
 }
