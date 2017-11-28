@@ -167,7 +167,7 @@ public class LevelManager : MonoBehaviour {
         ScoreManager.instance.submit.SetActive(false);
         string name = ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(0).transform.GetComponent<Text>().text + ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(1).transform.GetComponent<Text>().text + ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(2).transform.GetComponent<Text>().text;
         name = name + Random.Range(0000, 9999).ToString("0000");
-        ScoreManager.instance.AddNewHighscore(name, ScoreManager.instance.)
+        ScoreManager.instance.AddNewHighscore(name, ScoreManager.instance.current_score);
         SceneManager.LoadScene(0);
     }
 
