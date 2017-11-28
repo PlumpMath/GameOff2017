@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour
     public bool grounded;
     [HideInInspector]
     public bool can_attack;
+    private bool can_move;
+    [HideInInspector]
+    public bool beat_level;
 
     //sfx
     private AudioSource audio;
@@ -66,6 +69,7 @@ public class PlayerController : MonoBehaviour
 
         //set attributes
         can_attack = true;
+        can_move = true;
 
         //get audio source
         audio = GetComponent<AudioSource>();
@@ -73,6 +77,16 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (!can_move)
+        {
+            rb.isKinematic = true;
+            rb.velocity = Vector2.zero;
+            anim.SetBool("jumping", false);
+            anim.SetBool("idle", true);
+            anim.SetBool("walking", false);
+            return;
+        }
+
         if (!dead)
         {
             //update movement
@@ -166,6 +180,7 @@ public class PlayerController : MonoBehaviour
     {
         audio.PlayOneShot(death_sound);
         dead = true;
+        can_move = false;
         rb.velocity = Vector2.zero;
         rb.gravityScale = 0.5f;
         rb.AddForce(transform.up * death_force, ForceMode2D.Impulse);
@@ -177,8 +192,10 @@ public class PlayerController : MonoBehaviour
         LevelManager.instance.BreakdownLevel();
     }
 
-    private IEnumerator LevelComplete()
+    public IEnumerator LevelComplete()
     {
+        beat_level = true;
+        can_move = false;
         yield return new WaitForSeconds(1);
         LevelManager.instance.current_level = null;
         LevelManager.instance.BreakdownLevel();
@@ -188,10 +205,11 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("enemy") || collision.gameObject.CompareTag("boundary"))
             StartCoroutine(Death());
+        /*
         else if (collision.gameObject.CompareTag("end_level"))
         {
             StartCoroutine(LevelComplete());
         }
-
+        */
     }
 }

@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour {
     [Header("LEVEL PREFABS")]
     public GameObject player;
     public GameObject platform;
+    public GameObject enemy_platform;
 
     //level properties
     [Header("LEVEL PROPERTIES")]
@@ -74,8 +75,10 @@ public class LevelManager : MonoBehaviour {
             foreach(Transform t in first_floor)
             {
                 float rand = Random.Range(0f, 1f);
-                if(rand < 0.5f)
-                    Instantiate(platform, t.position, Quaternion.identity, level.transform);
+                if (rand < 0.5f)
+                {
+                    Instantiate(enemy_platform, t.position, Quaternion.identity, level.transform);
+                }
             }
             foreach (Transform t in second_floor)
             {
