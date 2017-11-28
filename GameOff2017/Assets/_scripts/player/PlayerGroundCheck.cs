@@ -30,11 +30,11 @@ public class PlayerGroundCheck : MonoBehaviour
             else
                 PlayerController.instance.grounded = false;
         }
+        else if(collision.gameObject.CompareTag("end_level") && !PlayerController.instance.beat_level)
+        {
+            if (PlayerController.instance.transform.position.y - (player_height / 2) > collision.gameObject.transform.position.y +
+                    (collision.gameObject.GetComponent<SpriteRenderer>().bounds.size.y / 2))
+                PlayerController.instance.StartCoroutine(PlayerController.instance.LevelComplete());
+        }
     }
-    /*
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        PlayerController.instance.grounded = false;
-    }
-    */
 }
