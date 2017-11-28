@@ -7,6 +7,10 @@ public class ScoreManager : MonoBehaviour {
 
     public static ScoreManager instance;
 
+    //player score
+    [HideInInspector]
+    public int current_score;
+
     public Text oneup_text;
     public Text highscore_text;
 
@@ -40,6 +44,11 @@ public class ScoreManager : MonoBehaviour {
         //print(highscoresList);
         //print(highscore_text);
         //highscore_text.text = highscoresList[0].score.ToString("000000");
+    }
+
+    private void Update()
+    {
+        oneup_text.text = current_score.ToString("000000");
     }
 
     public void AddNewHighscore(string username, int score)
