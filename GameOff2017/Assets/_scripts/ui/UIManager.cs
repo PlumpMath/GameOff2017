@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour {
 
         //update camera
         if (GetComponent<Canvas>().worldCamera == null)
-            GetComponent<Canvas>().worldCamera = Camera.current;
+            GetComponent<Canvas>().worldCamera = Camera.main;
 
 	}
 

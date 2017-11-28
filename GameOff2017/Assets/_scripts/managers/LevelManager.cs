@@ -142,6 +142,7 @@ public class LevelManager : MonoBehaviour {
         Destroy(current_player);
 
         ScoreManager.instance.submit.SetActive(true);
+        ScoreManager.instance.submit.transform.GetChild(1).GetComponent<Text>().text = ScoreManager.instance.current_score.ToString("000000");
         string[] letters = new string[26] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
         int current_letter = 0;
         int current_letter_letter = 0;
