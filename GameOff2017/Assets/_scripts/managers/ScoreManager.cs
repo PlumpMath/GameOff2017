@@ -14,7 +14,7 @@ public class ScoreManager : MonoBehaviour {
     public Text oneup_text;
     public Text highscore_text;
 
-    const string privateCode = "Jvzp8VG8SESuQeP4na6_2wWz65cAmS0k - U2akXaNaWkA";
+    const string privateCode = "Jvzp8VG8SESuQeP4na6_2wWz65cAmS0k-U2akXaNaWkA";
     const string publicCode = "5a1c6d3e6b2b65d418be08f6";
     const string webURL = "http://dreamlo.com/lb/";
 

@@ -147,30 +147,46 @@ public class LevelManager : MonoBehaviour {
         int current_letter_letter = 0;
         bool score_submitted = false;
         Player input_manager = ReInput.players.GetPlayer(0);
+        ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().fontSize = 30;
 
         while (score_submitted != true)
         {
-            if (input_manager.GetAxis ("UIHorizontal") > 0)
+            if (input_manager.GetAxis("v_dir") > 0)
             {
                 current_letter_letter--;
                 if (current_letter_letter < 0)
                     current_letter_letter = 25;
                 ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().text = letters[current_letter_letter];
             }
-            else if (input_manager.GetAxis("UIHorizontal") < 0)
+            else if (input_manager.GetAxis("v_dir") < 0)
             {
                 current_letter_letter++;
                 if (current_letter_letter > 25)
                     current_letter_letter = 0;
                 ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().text = letters[current_letter_letter];
             }
+            else if (input_manager.GetButtonDown("jump"))
+            {
+                if (current_letter == 2)
+                {
+                    score_submitted = true;
+                }
+                else
+                {
+                    ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().fontSize = 21;
+                    current_letter++;
+                    current_letter_letter = 0;
+                    ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().fontSize = 30;
 
+                }
+            }
             yield return null;
         }
         ScoreManager.instance.submit.SetActive(false);
         string name = ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(0).transform.GetComponent<Text>().text + ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(1).transform.GetComponent<Text>().text + ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(2).transform.GetComponent<Text>().text;
-        name = name + Random.Range(0000, 9999).ToString("0000");
+        name = name + "-" + Random.Range(0000, 9999).ToString("0000");
         ScoreManager.instance.AddNewHighscore(name, ScoreManager.instance.current_score);
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene(0);
     }
 
