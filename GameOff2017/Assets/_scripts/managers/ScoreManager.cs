@@ -16,6 +16,8 @@ public class ScoreManager : MonoBehaviour {
 
     public Highscore[] highscoresList;
 
+    public GameObject submit;
+
     void Awake()
     {
         //singleton setup

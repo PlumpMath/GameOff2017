@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Rewired;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -131,6 +132,39 @@ public class LevelManager : MonoBehaviour {
     public IEnumerator GameOver()
     {
         yield return StartCoroutine(TypeText());
+        Destroy(level);
+        Destroy(current_player);
+
+        ScoreManager.instance.submit.SetActive(true);
+        string[] letters = new string[26] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+        int current_letter = 0;
+        int current_letter_letter = 0;
+        bool score_submitted = false;
+        Player input_manager = ReInput.players.GetPlayer(0);
+
+        while (score_submitted != true)
+        {
+            if (input_manager.GetAxis ("UIHorizontal") > 0)
+            {
+                current_letter_letter--;
+                if (current_letter_letter < 0)
+                    current_letter_letter = 25;
+                ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().text = letters[current_letter_letter];
+            }
+            else if (input_manager.GetAxis("UIHorizontal") < 0)
+            {
+                current_letter_letter++;
+                if (current_letter_letter > 25)
+                    current_letter_letter = 0;
+                ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().text = letters[current_letter_letter];
+            }
+
+            yield return null;
+        }
+        ScoreManager.instance.submit.SetActive(false);
+        string name = ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(0).transform.GetComponent<Text>().text + ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(1).transform.GetComponent<Text>().text + ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(2).transform.GetComponent<Text>().text;
+        name = name + Random.Range(0000, 9999).ToString("0000");
+        ScoreManager.instance.AddNewHighscore(name, ScoreManager.instance.)
         SceneManager.LoadScene(0);
     }
 
