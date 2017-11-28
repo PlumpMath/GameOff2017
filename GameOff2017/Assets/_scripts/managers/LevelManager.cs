@@ -10,17 +10,25 @@ public class LevelManager : MonoBehaviour {
     public static LevelManager instance;
 
     //prefabs
-    [Header("PLAYER PREFAB")]
+    [Header("LEVEL PREFABS")]
     public GameObject player;
+    public GameObject platform;
 
     //level properties
     [Header("LEVEL PROPERTIES")]
     public GameObject level_root;
+    public Transform[] first_floor;
+    public Transform[] second_floor;
+    public Transform[] third_floor;
+    public Transform[] fourth_floor;
+    public Transform[] fifth_floor;
     [HideInInspector]
     //current level
     public Object current_level;
     //level object
     public GameObject level;
+    //end of level
+    private bool end_set = false;
 
     //player properties
     public GameObject current_player;
@@ -58,8 +66,49 @@ public class LevelManager : MonoBehaviour {
     {
         //spawn a random level
         if (current_level == null)
-            current_level = EnvironmentManager.instance.levels[Random.Range(0, EnvironmentManager.instance.levels.Length)];
-        level = Instantiate(current_level, level_root.transform) as GameObject;
+        {
+            level = new GameObject("platforms");
+            level.transform.SetParent(level_root.transform);
+
+            foreach(Transform t in first_floor)
+            {
+                float rand = Random.Range(0f, 1f);
+                if(rand < 0.5f)
+                    Instantiate(platform, t.position, Quaternion.identity, level.transform);
+            }
+            foreach (Transform t in second_floor)
+            {
+                float rand = Random.Range(0f, 1f);
+                if (rand < 0.5f)
+                    Instantiate(platform, t.position, Quaternion.identity, level.transform);
+            }
+            foreach (Transform t in third_floor)
+            {
+                float rand = Random.Range(0f, 1f);
+                if (rand < 0.5f)
+                    Instantiate(platform, t.position, Quaternion.identity, level.transform);
+            }
+            foreach (Transform t in fourth_floor)
+            {
+                float rand = Random.Range(0f, 1f);
+                if (rand < 0.5f)
+                    Instantiate(platform, t.position, Quaternion.identity, level.transform);
+            }
+            foreach (Transform t in fifth_floor)
+            {
+                float rand = Random.Range(0f, 1f);
+                if (rand < 0.5f)
+                {
+                    GameObject plat = Instantiate(platform, t.position, Quaternion.identity, level.transform);
+                    if(!end_set)
+                    {
+                        plat.tag = "end_level";
+                        end_set = true;
+                    }
+                }
+            }
+        }
+        //level = Instantiate(current_level, level_root.transform) as GameObject;
     }
 
     public void BreakdownLevel()
@@ -70,7 +119,11 @@ public class LevelManager : MonoBehaviour {
 
         //destroy level and player
         if (level != null && lives != 0)
+        {
             Destroy(level);
+            Destroy(current_player);
+            end_set = false;
+        }
         else
             StartCoroutine(GameOver());
     }
@@ -80,6 +133,7 @@ public class LevelManager : MonoBehaviour {
         yield return StartCoroutine(TypeText());
         SceneManager.LoadScene(0);
     }
+
     IEnumerator TypeText()
     {
         string message = "GAME OVER !";
@@ -107,7 +161,6 @@ public class LevelManager : MonoBehaviour {
     {
         //get spawn points from current level prefab
         GameObject[] enemy_spawn_points = GameObject.FindGameObjectsWithTag("enemy_spawn");
-
 
         //spawn enemies
         for (int i = 0; i < enemy_spawn_points.Length; i++)
