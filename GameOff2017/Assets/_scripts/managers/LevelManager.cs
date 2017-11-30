@@ -71,32 +71,52 @@ public class LevelManager : MonoBehaviour {
         {
             level = new GameObject("platforms");
             level.transform.SetParent(level_root.transform);
+            Object[] platform_sprites = Resources.LoadAll("purple", typeof(Sprite));
+            print(platform_sprites.Length);
 
             foreach(Transform t in first_floor)
             {
                 float rand = Random.Range(0f, 1f);
                 if (rand < 0.5f)
                 {
-                    Instantiate(enemy_platform, t.position, Quaternion.identity, level.transform);
+                    GameObject new_platform = Instantiate(enemy_platform, t.position, Quaternion.identity, level.transform);
+                    int randy = Random.Range(0, platform_sprites.Length);
+                    print(randy);
+                    new_platform.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
                 }
             }
             foreach (Transform t in second_floor)
             {
                 float rand = Random.Range(0f, 1f);
                 if (rand < 0.5f)
-                    Instantiate(platform, t.position, Quaternion.identity, level.transform);
+                {
+                    GameObject new_platform = Instantiate(platform, t.position, Quaternion.identity, level.transform);
+                    int randy = Random.Range(0, platform_sprites.Length);
+                    print(randy);
+                    new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
+                }
             }
             foreach (Transform t in third_floor)
             {
                 float rand = Random.Range(0f, 1f);
                 if (rand < 0.5f)
-                    Instantiate(platform, t.position, Quaternion.identity, level.transform);
+                {
+                    GameObject new_platform = Instantiate(platform, t.position, Quaternion.identity, level.transform);
+                    int randy = Random.Range(0, platform_sprites.Length);
+                    print(randy);
+                    new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
+                }
             }
             foreach (Transform t in fourth_floor)
             {
                 float rand = Random.Range(0f, 1f);
                 if (rand < 0.5f)
-                    Instantiate(platform, t.position, Quaternion.identity, level.transform);
+                {
+                    GameObject new_platform = Instantiate(platform, t.position, Quaternion.identity, level.transform);
+                    int randy = Random.Range(0, platform_sprites.Length);
+                    print(randy);
+                    new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
+                }
             }
             foreach (Transform t in fifth_floor)
             {

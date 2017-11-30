@@ -16,7 +16,7 @@ public class PlayerGroundCheck : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ground"))
         {
-            if (PlayerController.instance.transform.position.y - (player_height / 2) > collision.gameObject.transform.position.y +
+            if (PlayerController.instance.transform.position.y - (player_height / 2) > collision.gameObject.transform.position.y -.75 +
                     (collision.gameObject.GetComponent<SpriteRenderer>().bounds.size.y / 2))
                 PlayerController.instance.grounded = true;
             else

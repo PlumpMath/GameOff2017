@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     public float death_force;
 
     //player attributes
-    [HideInInspector]
+    //[HideInInspector]
     public bool grounded;
     [HideInInspector]
     public bool can_attack;
