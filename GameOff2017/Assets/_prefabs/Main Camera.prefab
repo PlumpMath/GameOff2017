@@ -79,6 +79,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+  m_StereoMirrorMode: 0
 --- !u!81 &81207493394866894
 AudioListener:
   m_ObjectHideFlags: 1
@@ -110,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SCShader: {fileID: 4800000, guid: 14156ee2cd4dade4a8da9c29407b9203, type: 3}
-  Fade: 0.5
+  Fade: 0.25
 --- !u!124 &124036921158138186
 Behaviour:
   m_ObjectHideFlags: 1

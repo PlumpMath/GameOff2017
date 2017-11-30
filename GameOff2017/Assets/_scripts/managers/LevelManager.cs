@@ -175,7 +175,7 @@ public class LevelManager : MonoBehaviour {
         int current_letter_letter = 0;
         bool score_submitted = false;
         Player input_manager = ReInput.players.GetPlayer(0);
-        ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().fontSize = 30;
+        ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().fontSize = 28;
 
         while (score_submitted != true)
         {
@@ -201,10 +201,10 @@ public class LevelManager : MonoBehaviour {
                 }
                 else
                 {
-                    ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().fontSize = 21;
+                    ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().fontSize = 20;
                     current_letter++;
                     current_letter_letter = 0;
-                    ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().fontSize = 30;
+                    ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().fontSize = 28;
 
                 }
             }
