@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour
     {
         audio.PlayOneShot(death_sound);
         dead = true;
-        can_move = false;
+        //can_move = false;
         rb.velocity = Vector2.zero;
         rb.gravityScale = 0.5f;
         rb.AddForce(transform.up * death_force, ForceMode2D.Impulse);

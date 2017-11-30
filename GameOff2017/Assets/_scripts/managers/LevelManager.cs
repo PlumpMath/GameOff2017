@@ -129,7 +129,7 @@ public class LevelManager : MonoBehaviour {
             end_set = false;
 
             //add score
-            ScoreManager.instance.current_score += 100;
+            ScoreManager.instance.current_score += 1000;
         }
         else
             StartCoroutine(GameOver());

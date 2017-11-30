@@ -1,0 +1,13 @@
+
+
+DELIVERY TIME TODO
+==================
+
+-player death animation (split up death and win code more)
+-enemy platform and pickup platform spawn logic
+-more elegant level generation algorithms
+-log based difficulty scaling
+
+-environment art
+-sfx
+-music
