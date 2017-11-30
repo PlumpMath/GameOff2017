@@ -127,9 +127,6 @@ public class LevelManager : MonoBehaviour {
             Destroy(level);
             Destroy(current_player);
             end_set = false;
-
-            //add score
-            ScoreManager.instance.current_score += 100;
         }
         else
             StartCoroutine(GameOver());

@@ -194,6 +194,9 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator LevelComplete()
     {
+        //add score
+        ScoreManager.instance.current_score += 1000;
+
         beat_level = true;
         can_move = false;
         yield return new WaitForSeconds(1);
