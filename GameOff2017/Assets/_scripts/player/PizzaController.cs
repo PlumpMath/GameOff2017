@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PizzaController : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class PizzaController : MonoBehaviour
     public float wait_time;
     private bool return_to_player = false;
     public BoxCollider2D platform_collider;
+
+    //prefab
+    public GameObject score;
 
     private void Awake()
     {
@@ -118,7 +122,15 @@ public class PizzaController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("enemy"))
+        {
+            //add score
+            ScoreManager.instance.current_score += 100;
+
+            GameObject new_score = Instantiate(score, this.transform.position + Vector3.up/2, Quaternion.identity, GameObject.Find("ui").transform);
+            new_score.GetComponent<Text>().text = (100).ToString();
+
             KillEnemy(collision.gameObject);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)

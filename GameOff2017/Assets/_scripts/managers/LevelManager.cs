@@ -64,6 +64,8 @@ public class LevelManager : MonoBehaviour {
             SetupLevel();
     }
 
+    
+
     private void SpawnLevel()
     {
         //spawn a random level
@@ -71,32 +73,60 @@ public class LevelManager : MonoBehaviour {
         {
             level = new GameObject("platforms");
             level.transform.SetParent(level_root.transform);
+            Object[] platform_sprites = Resources.LoadAll("purple", typeof(Sprite));
+            GameObject prefab;
 
             foreach(Transform t in first_floor)
             {
+                prefab = platform;
                 float rand = Random.Range(0f, 1f);
                 if (rand < 0.5f)
                 {
-                    Instantiate(enemy_platform, t.position, Quaternion.identity, level.transform);
+                    if (rand < 0.25f)
+                        prefab = enemy_platform;
+                    GameObject new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
+                    int randy = Random.Range(0, platform_sprites.Length);
+                    new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
                 }
             }
             foreach (Transform t in second_floor)
             {
+                prefab = platform;
                 float rand = Random.Range(0f, 1f);
                 if (rand < 0.5f)
-                    Instantiate(platform, t.position, Quaternion.identity, level.transform);
+                {
+                    if (rand < 0.25f)
+                        prefab = enemy_platform;
+                    GameObject new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
+                    int randy = Random.Range(0, platform_sprites.Length);
+                    new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
+                }
             }
             foreach (Transform t in third_floor)
             {
+                prefab = platform;
                 float rand = Random.Range(0f, 1f);
                 if (rand < 0.5f)
-                    Instantiate(platform, t.position, Quaternion.identity, level.transform);
+                {
+                    if (rand < 0.25f)
+                        prefab = enemy_platform;
+                    GameObject new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
+                    int randy = Random.Range(0, platform_sprites.Length);
+                    new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
+                }
             }
             foreach (Transform t in fourth_floor)
             {
+                prefab = platform;
                 float rand = Random.Range(0f, 1f);
                 if (rand < 0.5f)
-                    Instantiate(platform, t.position, Quaternion.identity, level.transform);
+                {
+                    if (rand < 0.25f)
+                        prefab = enemy_platform;
+                    GameObject new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
+                    int randy = Random.Range(0, platform_sprites.Length);
+                    new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
+                }
             }
             foreach (Transform t in fifth_floor)
             {
@@ -127,9 +157,6 @@ public class LevelManager : MonoBehaviour {
             Destroy(level);
             Destroy(current_player);
             end_set = false;
-
-            //add score
-            ScoreManager.instance.current_score += 1000;
         }
         else
             StartCoroutine(GameOver());
@@ -148,7 +175,7 @@ public class LevelManager : MonoBehaviour {
         int current_letter_letter = 0;
         bool score_submitted = false;
         Player input_manager = ReInput.players.GetPlayer(0);
-        ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().fontSize = 30;
+        ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().fontSize = 28;
 
         while (score_submitted != true)
         {
@@ -174,10 +201,10 @@ public class LevelManager : MonoBehaviour {
                 }
                 else
                 {
-                    ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().fontSize = 21;
+                    ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().fontSize = 20;
                     current_letter++;
                     current_letter_letter = 0;
-                    ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().fontSize = 30;
+                    ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().fontSize = 28;
 
                 }
             }
@@ -188,6 +215,7 @@ public class LevelManager : MonoBehaviour {
         name = name + "-" + Random.Range(0000, 9999).ToString("0000");
         ScoreManager.instance.AddNewHighscore(name, ScoreManager.instance.current_score);
         yield return new WaitForSeconds(2);
+        ScoreManager.instance.current_score = 0;
         SceneManager.LoadScene(0);
     }
 
