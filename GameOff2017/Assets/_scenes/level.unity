@@ -1037,7 +1037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1254911834784900, guid: 0295a1f10d5149b40b1592db6bc8ac79, type: 2}
   platform: {fileID: 1061152327728610, guid: 939b0d38280619e46a5274e2c3bf98ff, type: 2}
-  enemy_platform: {fileID: 1001917576572932, guid: e60a40f3fd73a2e4e8cd2767fd57ce6d,
+  enemy_platform: {fileID: 1681183892942012, guid: e60a40f3fd73a2e4e8cd2767fd57ce6d,
     type: 2}
   level_root: {fileID: 1070148640}
   first_floor:
