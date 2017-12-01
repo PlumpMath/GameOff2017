@@ -205,17 +205,20 @@ public class LevelManager : MonoBehaviour {
         Player input_manager = ReInput.players.GetPlayer(0);
         ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().fontSize = 28;
 
+        bool toggle = false;
         while (score_submitted != true)
         {
-            if (input_manager.GetAxis("v_dir") > 0)
+            if (input_manager.GetAxis("v_dir") > 0 && toggle == false)
             {
+                toggle = true;
                 current_letter_letter--;
                 if (current_letter_letter < 0)
                     current_letter_letter = 25;
                 ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(current_letter).transform.GetComponent<Text>().text = letters[current_letter_letter];
             }
-            else if (input_manager.GetAxis("v_dir") < 0)
+            else if (input_manager.GetAxis("v_dir") < 0 && toggle == false)
             {
+                toggle = true;
                 current_letter_letter++;
                 if (current_letter_letter > 25)
                     current_letter_letter = 0;
@@ -236,6 +239,8 @@ public class LevelManager : MonoBehaviour {
 
                 }
             }
+            else if (toggle == true && input_manager.GetAxis("v_dir") == 0)
+                toggle = false;
             yield return null;
         }
         ScoreManager.instance.submit.SetActive(false);
