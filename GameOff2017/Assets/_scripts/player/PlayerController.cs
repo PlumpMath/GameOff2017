@@ -50,8 +50,8 @@ public class PlayerController : MonoBehaviour
     private AudioSource audio;
     [Header("SFX")]
     public AudioClip jump_sound;
-    public AudioClip attack_sound;
     public AudioClip death_sound;
+    public AudioClip win_sound;
 
     private void Awake()
     {
@@ -202,6 +202,9 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator LevelComplete()
     {
+        //play win sound
+        audio.PlayOneShot(win_sound);
+
         //add score
         ScoreManager.instance.current_score += 1000;
 

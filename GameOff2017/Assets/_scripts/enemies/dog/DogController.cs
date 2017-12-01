@@ -11,6 +11,9 @@ public class DogController : Enemy {
     // Enemy Attributes
     public float speed;
 
+    //death sound
+    public AudioClip death_sound;
+
     // Use this for initialization
     void Start () {
         StartCoroutine(Descend());
@@ -64,6 +67,8 @@ public class DogController : Enemy {
 
     public override void Death()
     {
+        GetComponent<AudioSource>().PlayOneShot(death_sound);
+
         base.Death();
         
         GetComponent<BoxCollider2D>().enabled = false;

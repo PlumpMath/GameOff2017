@@ -15,6 +15,9 @@ public class BullyController : Enemy {
     RaycastHit2D rayCastLeft;
     RaycastHit2D rayCastRight;
 
+    //death sound
+    public AudioClip death_sound;
+
 	// Use this for initialization
 	void Start () {
 
@@ -75,6 +78,8 @@ public class BullyController : Enemy {
 
     public override void Death()
     {
+        GetComponent<AudioSource>().PlayOneShot(death_sound);
+
         base.Death();
 
         anim.SetBool("dead", true);

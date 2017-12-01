@@ -84,104 +84,132 @@ public class LevelManager : MonoBehaviour {
             BuildingManager.instance.SetSprite(style);
             GameObject prefab;
 
-            foreach(Transform t in first_floor)
+            bool spawned_platform = false;
+            while (!spawned_platform)
             {
-                prefab = platform;
-                float rand = Random.Range(0f, 1f);
-                if (rand < 0.5f)
+                foreach (Transform t in first_floor)
                 {
-                    if (rand < 0.25f)
+                    prefab = platform;
+                    float rand = Random.Range(0f, 1f);
+                    if (rand <= 0.5f)
                     {
-                        prefab = enemy_platform;
-                        prefab.transform.GetChild(0).GetComponent<SpawnPrefab>().prefab = bully;
-                    }
-                    GameObject new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
-                    int randy = Random.Range(0, platform_sprites.Length);
-                    new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
-                }
-            }
-            foreach (Transform t in second_floor)
-            {
-                prefab = platform;
-                float rand = Random.Range(0f, 1f);
-                if (rand < 0.5f)
-                {
-                    if (rand < 0.25f)
-                    {
-                        prefab = enemy_platform;
-                        prefab.transform.GetChild(0).GetComponent<SpawnPrefab>().prefab = bully;
-                    }
-                    GameObject new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
-                    int randy = Random.Range(0, platform_sprites.Length);
-                    new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
-                }
-            }
-            foreach (Transform t in third_floor)
-            {
-                prefab = platform;
-                float rand = Random.Range(0f, 1f);
-                if (rand < 0.5f)
-                {
-                    if (rand < 0.25f)
-                    {
-                        prefab = enemy_platform;
-                        if (rand < 0.125f)
-                            prefab.transform.GetChild(0).GetComponent<SpawnPrefab>().prefab = doghouse;
-                        else
+                        if (rand < 0.25f)
+                        {
+                            prefab = enemy_platform;
                             prefab.transform.GetChild(0).GetComponent<SpawnPrefab>().prefab = bully;
+                        }
+                        GameObject new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
+                        int randy = Random.Range(0, platform_sprites.Length);
+                        new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
+                        spawned_platform = true;
                     }
-                    GameObject new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
-                    int randy = Random.Range(0, platform_sprites.Length);
-                    new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
                 }
             }
-            foreach (Transform t in fourth_floor)
-            {
-                prefab = platform;
-                float rand = Random.Range(0f, 1f);
-                if (rand < 0.5f)
-                {
-                    if (rand < 0.25f)
-                    {
-                        prefab = enemy_platform;
-                        if (rand < 0.125f)
-                            prefab.transform.GetChild(0).GetComponent<SpawnPrefab>().prefab = doghouse;
-                        else
-                            prefab.transform.GetChild(0).GetComponent<SpawnPrefab>().prefab = bully;
-                    }
-                    GameObject new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
-                    int randy = Random.Range(0, platform_sprites.Length);
-                    new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
-                }
-            }
-            foreach (Transform t in fifth_floor)
-            {
-                prefab = platform;
-                GameObject new_platform = null;
-                float rand = Random.Range(0f, 1f);
-                if (rand < 0.5f)
-                {
-                    if (!end_set)
-                    {
-                        Object[] customers = Resources.LoadAll("customers", typeof(Sprite));
 
-                        new_platform = Instantiate(goal_platform, t.position, Quaternion.identity, level.transform);
-                        int randy = Random.Range(0, platform_sprites.Length);
-                        new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
-                        int randi = Random.Range(0, customers.Length);
-                        new_platform.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = (Sprite)customers[randi];
-                        end_set = true;
-                    }
-                    else
+            spawned_platform = false;
+            while (!spawned_platform)
+            {
+                foreach (Transform t in second_floor)
+                {
+                    prefab = platform;
+                    float rand = Random.Range(0f, 1f);
+                    if (rand < 0.5f)
                     {
-                        new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
+                        if (rand < 0.25f)
+                        {
+                            prefab = enemy_platform;
+                            prefab.transform.GetChild(0).GetComponent<SpawnPrefab>().prefab = bully;
+                        }
+                        GameObject new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
                         int randy = Random.Range(0, platform_sprites.Length);
                         new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
+                        spawned_platform = true;
+                    }
+                }
+            }
+
+            spawned_platform = false;
+            while (!spawned_platform)
+            {
+                foreach (Transform t in third_floor)
+                {
+                    prefab = platform;
+                    float rand = Random.Range(0f, 1f);
+                    if (rand < 0.5f)
+                    {
+                        if (rand < 0.25f)
+                        {
+                            prefab = enemy_platform;
+                            if (rand < 0.125f)
+                                prefab.transform.GetChild(0).GetComponent<SpawnPrefab>().prefab = doghouse;
+                            else
+                                prefab.transform.GetChild(0).GetComponent<SpawnPrefab>().prefab = bully;
+                        }
+                        GameObject new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
+                        int randy = Random.Range(0, platform_sprites.Length);
+                        new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
+                        spawned_platform = true;
+                    }
+                }
+            }
+
+            spawned_platform = false;
+            while (!spawned_platform)
+            {
+                foreach (Transform t in fourth_floor)
+                {
+                    prefab = platform;
+                    float rand = Random.Range(0f, 1f);
+                    if (rand < 0.5f)
+                    {
+                        if (rand < 0.25f)
+                        {
+                            prefab = enemy_platform;
+                            if (rand < 0.125f)
+                                prefab.transform.GetChild(0).GetComponent<SpawnPrefab>().prefab = doghouse;
+                            else
+                                prefab.transform.GetChild(0).GetComponent<SpawnPrefab>().prefab = bully;
+                        }
+                        GameObject new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
+                        int randy = Random.Range(0, platform_sprites.Length);
+                        new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
+                        spawned_platform = true;
+                    }
+                }
+            }
+
+            spawned_platform = false;
+            while (!spawned_platform)
+            {
+                foreach (Transform t in fifth_floor)
+                {
+                    prefab = platform;
+                    GameObject new_platform = null;
+                    float rand = Random.Range(0f, 1f);
+                    if (rand < 0.5f)
+                    {
+                        if (!end_set)
+                        {
+                            Object[] customers = Resources.LoadAll("customers", typeof(Sprite));
+
+                            new_platform = Instantiate(goal_platform, t.position, Quaternion.identity, level.transform);
+                            int randy = Random.Range(0, platform_sprites.Length);
+                            new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
+                            int randi = Random.Range(0, customers.Length);
+                            new_platform.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = (Sprite)customers[randi];
+                            end_set = true;
+                        }
+                        else
+                        {
+                            new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
+                            int randy = Random.Range(0, platform_sprites.Length);
+                            new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
+                        }
+                        spawned_platform = true;
                     }
                 }
             }
         }
-        //level = Instantiate(current_level, level_root.transform) as GameObject;
     }
 
     public void BreakdownLevel()
