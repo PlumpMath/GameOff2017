@@ -17,6 +17,13 @@ public class DogController : Enemy {
 
         //set sprite
         sprite = transform.Find("enemy_sprite").GetComponent<SpriteRenderer>();
+
+        if ((this.transform.position - GameObject.FindGameObjectWithTag("Player").transform.position).x > 0)
+        {
+            current_direction = direction.LEFT;
+        }
+        else
+            current_direction = direction.RIGHT;
     }
 	
 	// Update is called once per frame
@@ -43,13 +50,13 @@ public class DogController : Enemy {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("enemy"))
-        {
-            if (current_direction == direction.RIGHT)
-                current_direction = direction.LEFT;
-            else
-                current_direction = direction.RIGHT;
-        }
+        //if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("enemy"))
+        //{
+        //    if (current_direction == direction.RIGHT)
+        //        current_direction = direction.LEFT;
+        //    else
+        //        current_direction = direction.RIGHT;
+        //}
     }
 
     public override void Death()

@@ -77,7 +77,7 @@ public class LevelManager : MonoBehaviour {
         {
             level = new GameObject("platforms");
             level.transform.SetParent(level_root.transform);
-            List<string> styles = new List<string>() { "purple", "green" };
+            List<string> styles = new List<string>() { "purple", "green", "orange" };
             string style = styles[Random.Range(0, styles.Count)];
             Object[] platform_sprites = Resources.LoadAll(style, typeof(Sprite));
             BuildingManager.instance.SetSprite(style);
