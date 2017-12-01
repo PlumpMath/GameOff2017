@@ -7,6 +7,7 @@ public class DogHouseController : MonoBehaviour {
     public bool dog;
     public GameObject dog_prefab;
     public DogController.direction direction;
+    public Sprite closed;
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +29,7 @@ public class DogHouseController : MonoBehaviour {
         {
             GameObject temp = Instantiate(dog_prefab, transform.position, Quaternion.identity, transform);
             temp.GetComponent<DogController>().current_direction = direction;
+            GetComponent<SpriteRenderer>().sprite = closed;
             dog = false;
         }
     }

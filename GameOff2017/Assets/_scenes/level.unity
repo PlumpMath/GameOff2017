@@ -1074,6 +1074,8 @@ MonoBehaviour:
   level: {fileID: 0}
   current_player: {fileID: 0}
   lives: 0
+  doghouse: {fileID: 1101909954170338, guid: 0c80cd2a0cacb37459df9909e5a2c55a, type: 2}
+  bully: {fileID: 1276446103147340, guid: 68e5a4e0ceda25747b031e5ba3f4e724, type: 2}
 --- !u!1 &1301293612
 GameObject:
   m_ObjectHideFlags: 0

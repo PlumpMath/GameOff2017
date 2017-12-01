@@ -36,6 +36,10 @@ public class LevelManager : MonoBehaviour {
     public GameObject current_player;
     public int lives;
 
+    //enemy prefabs
+    public GameObject doghouse;
+    public GameObject bully;
+
     private void Awake()
     {
         //singleton setup
@@ -83,7 +87,10 @@ public class LevelManager : MonoBehaviour {
                 if (rand < 0.5f)
                 {
                     if (rand < 0.25f)
+                    {
                         prefab = enemy_platform;
+                        prefab.transform.GetChild(0).GetComponent<SpawnPrefab>().prefab = bully;
+                    }
                     GameObject new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
                     int randy = Random.Range(0, platform_sprites.Length);
                     new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
@@ -96,7 +103,10 @@ public class LevelManager : MonoBehaviour {
                 if (rand < 0.5f)
                 {
                     if (rand < 0.25f)
+                    {
                         prefab = enemy_platform;
+                        prefab.transform.GetChild(0).GetComponent<SpawnPrefab>().prefab = bully;
+                    }
                     GameObject new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
                     int randy = Random.Range(0, platform_sprites.Length);
                     new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
@@ -109,7 +119,13 @@ public class LevelManager : MonoBehaviour {
                 if (rand < 0.5f)
                 {
                     if (rand < 0.25f)
+                    {
                         prefab = enemy_platform;
+                        if (rand < 0.125f)
+                            prefab.transform.GetChild(0).GetComponent<SpawnPrefab>().prefab = doghouse;
+                        else
+                            prefab.transform.GetChild(0).GetComponent<SpawnPrefab>().prefab = bully;
+                    }
                     GameObject new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
                     int randy = Random.Range(0, platform_sprites.Length);
                     new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
@@ -122,7 +138,13 @@ public class LevelManager : MonoBehaviour {
                 if (rand < 0.5f)
                 {
                     if (rand < 0.25f)
+                    {
                         prefab = enemy_platform;
+                        if (rand < 0.125f)
+                            prefab.transform.GetChild(0).GetComponent<SpawnPrefab>().prefab = doghouse;
+                        else
+                            prefab.transform.GetChild(0).GetComponent<SpawnPrefab>().prefab = bully;
+                    }
                     GameObject new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
                     int randy = Random.Range(0, platform_sprites.Length);
                     new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
