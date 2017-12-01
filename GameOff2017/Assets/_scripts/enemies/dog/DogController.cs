@@ -53,20 +53,19 @@ public class DogController : Enemy {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //if (collision.gameObject.CompareTag("ground") || collision.gameObject.CompareTag("enemy"))
-        //{
-        //    if (current_direction == direction.RIGHT)
-        //        current_direction = direction.LEFT;
-        //    else
-        //        current_direction = direction.RIGHT;
-        //}
+        if (collision.gameObject.CompareTag("enemy"))
+        {
+            if (current_direction == direction.RIGHT)
+                current_direction = direction.LEFT;
+            else
+                current_direction = direction.RIGHT;
+        }
     }
 
     public override void Death()
     {
         base.Death();
-
-        anim.SetBool("dead", true);
+        
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<Rigidbody2D>().gravityScale = 0.5f;
         StartCoroutine(Remove());
