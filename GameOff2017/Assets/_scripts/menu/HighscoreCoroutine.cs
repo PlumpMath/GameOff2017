@@ -17,14 +17,13 @@ public class HighscoreCoroutine : MonoBehaviour {
 
     private void Awake()
     {
-        ScoreManager.instance.DownloadHighscores();
     }
 
     void Start ()
     {
         //get audio source
         audio = GetComponent<AudioSource>();
-
+        ScoreManager.instance.DownloadHighscores();
         StartCoroutine(Highscores());
         places = new List<string>() { "1st", "2nd", "3rd", "4th", "5th" };
 	}
