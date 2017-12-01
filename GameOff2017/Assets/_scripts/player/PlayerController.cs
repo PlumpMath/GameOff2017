@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     //pizza
     [Header("PIZZA")]
     public GameObject pizza;
+    [HideInInspector]
+    public GameObject pizza_instance = null;
     public Transform pizza_spawn;
     public float pizza_spawn_distance;
 
@@ -168,7 +170,7 @@ public class PlayerController : MonoBehaviour
     private void Attack()
     {
         can_attack = false;
-        Instantiate(pizza, pizza_spawn.position, pizza_spawn.rotation);
+        pizza_instance = Instantiate(pizza, pizza_spawn.position, pizza_spawn.rotation);
     }
 
     private void Recall()
@@ -179,6 +181,11 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Death()
     {
         audio.PlayOneShot(death_sound);
+        if(pizza_instance != null)
+        {
+            Destroy(PizzaController.instance.gameObject);
+            pizza_instance = null;
+        }
         dead = true;
         //can_move = false;
         rb.velocity = Vector2.zero;
@@ -196,6 +203,12 @@ public class PlayerController : MonoBehaviour
     {
         //add score
         ScoreManager.instance.current_score += 1000;
+
+        if (pizza_instance != null)
+        {
+            Destroy(PizzaController.instance.gameObject);
+            pizza_instance = null;
+        }
 
         beat_level = true;
         can_move = false;

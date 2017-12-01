@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 50083306945532912}
   - component: {fileID: 61500924162781244}
   - component: {fileID: 114121424805213044}
-  m_Layer: 2
+  m_Layer: 13
   m_Name: dog
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ Animator:
   m_GameObject: {fileID: 1824230643455842}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aaa4437c5b6948849a81b63fe983438d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -160,6 +160,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -175,6 +176,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

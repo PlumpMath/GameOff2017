@@ -710,7 +710,7 @@ GameObject:
   m_Component:
   - component: {fileID: 771083168}
   - component: {fileID: 771083169}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: right_wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1513,7 +1513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1884853732}
   - component: {fileID: 1884853733}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: left_wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,11 +1,15 @@
 fileFormatVersion: 2
-guid: ef8be6265743ff842a6bbd8f13f1af8c
-timeCreated: 1512015453
+guid: 0e15c9ee16c015f4a9946033b3b237c6
+timeCreated: 1512151459
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: dog_walk_0
-    21300002: dog_walk_1
+    21300000: pizza_0
+    21300002: pizza_1
+    21300004: pizza_2
+    21300006: pizza_3
+    21300008: pizza_4
+    21300010: pizza_5
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -98,7 +102,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dog_walk_0
+      name: pizza_0
       rect:
         serializedVersion: 2
         x: 0
@@ -112,10 +116,66 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: dog_walk_1
+      name: pizza_1
       rect:
         serializedVersion: 2
         x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pizza_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pizza_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pizza_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pizza_5
+      rect:
+        serializedVersion: 2
+        x: 80
         y: 0
         width: 16
         height: 16
