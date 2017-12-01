@@ -163,9 +163,13 @@ public class LevelManager : MonoBehaviour {
                 {
                     if (!end_set)
                     {
+                        Object[] customers = Resources.LoadAll("customers", typeof(Sprite));
+
                         new_platform = Instantiate(goal_platform, t.position, Quaternion.identity, level.transform);
                         int randy = Random.Range(0, platform_sprites.Length);
                         new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
+                        int randi = Random.Range(0, customers.Length);
+                        new_platform.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = (Sprite)customers[randi];
                         end_set = true;
                     }
                     else
