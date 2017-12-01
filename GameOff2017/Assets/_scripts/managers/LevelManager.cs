@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour {
     public GameObject player;
     public GameObject platform;
     public GameObject enemy_platform;
+    public GameObject goal_platform;
 
     //level properties
     [Header("LEVEL PROPERTIES")]
@@ -156,16 +157,22 @@ public class LevelManager : MonoBehaviour {
             foreach (Transform t in fifth_floor)
             {
                 prefab = platform;
+                GameObject new_platform = null;
                 float rand = Random.Range(0f, 1f);
                 if (rand < 0.5f)
                 {
-                    GameObject new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
-                    int randy = Random.Range(0, platform_sprites.Length);
-                    new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
                     if (!end_set)
                     {
-                        new_platform.tag = "end_level";
+                        new_platform = Instantiate(goal_platform, t.position, Quaternion.identity, level.transform);
+                        int randy = Random.Range(0, platform_sprites.Length);
+                        new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
                         end_set = true;
+                    }
+                    else
+                    {
+                        new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
+                        int randy = Random.Range(0, platform_sprites.Length);
+                        new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
                     }
                 }
             }

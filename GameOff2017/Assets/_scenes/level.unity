@@ -1115,6 +1115,8 @@ MonoBehaviour:
   platform: {fileID: 1061152327728610, guid: 939b0d38280619e46a5274e2c3bf98ff, type: 2}
   enemy_platform: {fileID: 1681183892942012, guid: e60a40f3fd73a2e4e8cd2767fd57ce6d,
     type: 2}
+  goal_platform: {fileID: 1106862376487760, guid: 4a7f3f4024d48dd4880d476255a01c87,
+    type: 2}
   level_root: {fileID: 1070148640}
   first_floor:
   - {fileID: 1916769627}
