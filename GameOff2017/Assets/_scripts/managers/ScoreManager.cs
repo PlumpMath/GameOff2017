@@ -21,6 +21,7 @@ public class ScoreManager : MonoBehaviour {
     public Highscore[] highscoresList;
 
     public GameObject submit;
+    public GameObject submitting;
 
     void Awake()
     {

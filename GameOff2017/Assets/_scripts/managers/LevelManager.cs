@@ -244,11 +244,13 @@ public class LevelManager : MonoBehaviour {
             yield return null;
         }
         ScoreManager.instance.submit.SetActive(false);
+        ScoreManager.instance.submitting.SetActive(true);
         string name = ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(0).transform.GetComponent<Text>().text + ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(1).transform.GetComponent<Text>().text + ScoreManager.instance.submit.transform.Find("Letters").transform.GetChild(2).transform.GetComponent<Text>().text;
         name = name + "-" + Random.Range(0000, 9999).ToString("0000");
         ScoreManager.instance.AddNewHighscore(name, ScoreManager.instance.current_score);
         yield return new WaitForSeconds(2);
         ScoreManager.instance.current_score = 0;
+        ScoreManager.instance.submitting.SetActive(false);
         SceneManager.LoadScene(0);
     }
 
