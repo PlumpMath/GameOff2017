@@ -10,6 +10,11 @@ public class HighscoreCoroutine : MonoBehaviour {
 
     private List<string> places;
 
+    //sfx
+    private AudioSource audio;
+    [Header("SFX")]
+    public AudioClip score;
+
     private void Awake()
     {
         ScoreManager.instance.DownloadHighscores();
@@ -17,6 +22,9 @@ public class HighscoreCoroutine : MonoBehaviour {
 
     void Start ()
     {
+        //get audio source
+        audio = GetComponent<AudioSource>();
+
         StartCoroutine(Highscores());
         places = new List<string>() { "1st", "2nd", "3rd", "4th", "5th" };
 	}
@@ -32,6 +40,7 @@ public class HighscoreCoroutine : MonoBehaviour {
             Regex reg = new Regex("([A-Z])+");
             scores[i].gameObject.GetComponent<Text>().text = places[i] + "     " + ScoreManager.instance.highscoresList[i].score.ToString("000000          ") + reg.Match(ScoreManager.instance.highscoresList[i].username);
             scores[i].gameObject.SetActive(true);
+            audio.PlayOneShot(score);
         }
     }
 }

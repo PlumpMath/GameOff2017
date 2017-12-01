@@ -77,7 +77,10 @@ public class LevelManager : MonoBehaviour {
         {
             level = new GameObject("platforms");
             level.transform.SetParent(level_root.transform);
-            Object[] platform_sprites = Resources.LoadAll("purple", typeof(Sprite));
+            List<string> styles = new List<string>() { "purple", "green" };
+            string style = styles[Random.Range(0, styles.Count)];
+            Object[] platform_sprites = Resources.LoadAll(style, typeof(Sprite));
+            BuildingManager.instance.SetSprite(style);
             GameObject prefab;
 
             foreach(Transform t in first_floor)
@@ -152,13 +155,16 @@ public class LevelManager : MonoBehaviour {
             }
             foreach (Transform t in fifth_floor)
             {
+                prefab = platform;
                 float rand = Random.Range(0f, 1f);
                 if (rand < 0.5f)
                 {
-                    GameObject plat = Instantiate(platform, t.position, Quaternion.identity, level.transform);
-                    if(!end_set)
+                    GameObject new_platform = Instantiate(prefab, t.position, Quaternion.identity, level.transform);
+                    int randy = Random.Range(0, platform_sprites.Length);
+                    new_platform.GetComponent<SpriteRenderer>().sprite = (Sprite)platform_sprites[randy];
+                    if (!end_set)
                     {
-                        plat.tag = "end_level";
+                        new_platform.tag = "end_level";
                         end_set = true;
                     }
                 }
