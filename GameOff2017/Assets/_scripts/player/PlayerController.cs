@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -209,6 +210,9 @@ public class PlayerController : MonoBehaviour
             Destroy(PizzaController.instance.gameObject);
             pizza_instance = null;
         }
+
+        GameObject new_score = Instantiate(PizzaController.instance.score, this.transform.position + Vector3.up / 2, Quaternion.identity, GameObject.Find("ui").transform);
+        new_score.GetComponent<Text>().text = (1000).ToString();
 
         beat_level = true;
         can_move = false;
